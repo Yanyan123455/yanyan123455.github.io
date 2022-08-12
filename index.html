@@ -112,6 +112,132 @@
 </li>
 </ul>
 <h5 id="3-vue跟传统开发的区别"><a href="#3-vue跟传统开发的区别" class="headerlink" title="3.vue跟传统开发的区别"></a>3.vue跟传统开发的区别</h5><p>界面的事件，以及页面的变动，传统开发是通过jQuery操作DOM节点，而vue都是去操作数据，根据数据自动绑定出来的</p>
+<h5 id="4-vue中的key有什么作用"><a href="#4-vue中的key有什么作用" class="headerlink" title="4.vue中的key有什么作用"></a>4.vue中的key有什么作用</h5><p>key代表的是一个唯一的id，可以根据key，更准确， 更快的找到对应的点</p>
+<h5 id="5-v-if和v-show"><a href="#5-v-if和v-show" class="headerlink" title="5.v-if和v-show"></a>5.v-if和v-show</h5><ul>
+<li><p>相同点：</p>
+<ul>
+<li>作用相同，都可以控制元素在页面上是否显示</li>
+<li>用法相同，都是根据布尔值来判断是否显示</li>
+</ul>
+</li>
+<li><p>不同点：</p>
+<ul>
+<li>v-show隐藏是给元素添加display：none，但是元素是还在的，而v-if显示隐藏是将元素整个添加或删除。</li>
+<li>v-show的显示和隐藏不会触发组件的生命周期，v-if的显示隐藏会触发生命周期</li>
+</ul>
+</li>
+</ul>
+<p>使用场景：</p>
+<ul>
+<li>如果需要非常频繁地切换就是用v-show，运行时条件很少改变，就使用v-if</li>
+</ul>
+<h5 id="computed和watch"><a href="#computed和watch" class="headerlink" title="computed和watch"></a>computed和watch</h5><ul>
+<li>相同点<ul>
+<li>watch和computed都是以函数为基础，也都是通过监听自身依赖的数据，并且在数据发生变化时，触发相关函数去实现自身数据的变动。</li>
+</ul>
+</li>
+<li>不同点<ul>
+<li>时机不同，computed是在HTML，DOM加载后马上执行，watch则是观察Vue实例上的数据变动，一般情况下是依赖项的值发生变化之后再执行，但是也可以设置立即执行。</li>
+<li>计算属性有缓存，监听没有</li>
+<li>代码的内容不同，watch可以写任意的代码逻辑，而计算属性必须是同步计算，并返回。</li>
+</ul>
+</li>
+</ul>
+<h5 id="Vue的生命周期"><a href="#Vue的生命周期" class="headerlink" title="Vue的生命周期"></a>Vue的生命周期</h5><ul>
+<li><p>生命周期是什么</p>
+<ul>
+<li>Vue生命周期是一个V、ue实例创建到销毁的过程，Vue生命周期总共可以分为8个阶段：创建前后，载入前后，更新前后，销毁前后</li>
+</ul>
+</li>
+<li><p>生命周期有哪些</p>
+<table>
+<thead>
+<tr>
+<th>生命周期</th>
+<th>描述</th>
+<th align="left">使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>beforeCreate</td>
+<td>组件实例被创建之初</td>
+<td align="left">执行时组件实例还未创建，通常用于插件开发中执行一些初始化任务</td>
+</tr>
+<tr>
+<td>created</td>
+<td>组件实例已经完全创建</td>
+<td align="left">组件初始化完毕，各种数据可以使用，常用于异步数据获取</td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>组件挂载之前</td>
+<td align="left">未执行渲染、更新，dom未创建</td>
+</tr>
+<tr>
+<td>mounted</td>
+<td>组件挂载到实例上去之后</td>
+<td align="left">初始化结束，dom已创建，可用于获取访问数据和dom元素</td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td>组件数据发生变化，更新之前</td>
+<td align="left">更新前，可用于获取更新前各种状态</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>组件数据更新之后</td>
+<td align="left">更新后，所有状态已是最新</td>
+</tr>
+<tr>
+<td>beforeDestroy</td>
+<td>组件实例销毁之前</td>
+<td align="left">销毁前，可用于一些定时器或订阅的取消</td>
+</tr>
+<tr>
+<td>destroyed</td>
+<td>组件实例销毁之后</td>
+<td align="left">组件已销毁，作用同上</td>
+</tr>
+<tr>
+<td>activated</td>
+<td>keep-alive 缓存的组件激活时</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>deactivated</td>
+<td>keep-alive 缓存的组件停用时调用</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>errorCaptured</td>
+<td>捕获一个来自子孙组件的错误时被调用</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h5 id="v-if和v-for的优先级是什么？"><a href="#v-if和v-for的优先级是什么？" class="headerlink" title="v-if和v-for的优先级是什么？"></a>v-if和v-for的优先级是什么？</h5><ul>
+<li>作用<ul>
+<li>v-if用于条件性地渲染一块内容</li>
+<li>v-for是基于一个数组来渲染一个列表</li>
+</ul>
+</li>
+<li>优先级<ul>
+<li>vue2中，v-for优先级比v-if高</li>
+<li>vue3中，v-if优先级比v-for高</li>
+</ul>
+</li>
+<li>注意事项<ul>
+<li>不要把v-if和v-for同时用再同一个元素上</li>
+</ul>
+</li>
+</ul>
+<h5 id="vue组件之间的通信方式（8种）"><a href="#vue组件之间的通信方式（8种）" class="headerlink" title="vue组件之间的通信方式（8种）"></a>vue组件之间的通信方式（8种）</h5><ul>
+<li>父子组件通信</li>
+<li>兄弟组件通信</li>
+<li>祖先后代组件通信</li>
+<li>Vuex</li>
+</ul>
 <h5 id=""><a href="#" class="headerlink" title=""></a></h5>
       
     </div>
