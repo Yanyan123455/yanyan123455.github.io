@@ -131,7 +131,7 @@
 <ul>
 <li>如果需要非常频繁地切换就是用v-show，运行时条件很少改变，就使用v-if</li>
 </ul>
-<h5 id="computed和watch"><a href="#computed和watch" class="headerlink" title="computed和watch"></a>computed和watch</h5><ul>
+<h5 id="6-computed和watch"><a href="#6-computed和watch" class="headerlink" title="6.computed和watch"></a>6.computed和watch</h5><ul>
 <li>相同点<ul>
 <li>watch和computed都是以函数为基础，也都是通过监听自身依赖的数据，并且在数据发生变化时，触发相关函数去实现自身数据的变动。</li>
 </ul>
@@ -143,7 +143,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="Vue的生命周期"><a href="#Vue的生命周期" class="headerlink" title="Vue的生命周期"></a>Vue的生命周期</h5><ul>
+<h5 id="7-Vue的生命周期"><a href="#7-Vue的生命周期" class="headerlink" title="7.Vue的生命周期"></a>7.Vue的生命周期</h5><ul>
 <li><p>生命周期是什么</p>
 <ul>
 <li>Vue生命周期是一个V、ue实例创建到销毁的过程，Vue生命周期总共可以分为8个阶段：创建前后，载入前后，更新前后，销毁前后</li>
@@ -216,7 +216,7 @@
 </tbody></table>
 </li>
 </ul>
-<h5 id="v-if和v-for的优先级是什么？"><a href="#v-if和v-for的优先级是什么？" class="headerlink" title="v-if和v-for的优先级是什么？"></a>v-if和v-for的优先级是什么？</h5><ul>
+<h5 id="8-v-if和v-for的优先级是什么？"><a href="#8-v-if和v-for的优先级是什么？" class="headerlink" title="8.v-if和v-for的优先级是什么？"></a>8.v-if和v-for的优先级是什么？</h5><ul>
 <li>作用<ul>
 <li>v-if用于条件性地渲染一块内容</li>
 <li>v-for是基于一个数组来渲染一个列表</li>
@@ -232,13 +232,128 @@
 </ul>
 </li>
 </ul>
-<h5 id="vue组件之间的通信方式（8种）"><a href="#vue组件之间的通信方式（8种）" class="headerlink" title="vue组件之间的通信方式（8种）"></a>vue组件之间的通信方式（8种）</h5><ul>
-<li>父子组件通信</li>
-<li>兄弟组件通信</li>
-<li>祖先后代组件通信</li>
-<li>Vuex</li>
+<h5 id="9-vue组件之间的通信方式（8种）"><a href="#9-vue组件之间的通信方式（8种）" class="headerlink" title="9.vue组件之间的通信方式（8种）"></a>9.vue组件之间的通信方式（8种）</h5><ol>
+<li><p>父子组件通信</p>
+<ol>
+<li>props + $emit</li>
+</ol>
+<ul>
+<li>父组件给子组件传递数据：<ul>
+<li>子组件在data中设置props:[‘参数名’]接收父组件传过来的参数</li>
 </ul>
-<h5 id=""><a href="#" class="headerlink" title=""></a></h5>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">props:&#123;  </span><br><span class="line">    // 字符串形式  </span><br><span class="line"> name:String // 接收的类型参数  </span><br><span class="line">    // 对象形式  </span><br><span class="line">    age:&#123;    </span><br><span class="line">        type:Number, // 接收的类型为数值  </span><br><span class="line">        defaule:18,  // 默认值为18  </span><br><span class="line">       require:true // age属性必须传递  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>父组件在使用子组件标签中通过字面量来传递值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Children name=&quot;jack&quot; age=18 /&gt; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>子组件给父组件传递数据：</p>
+<ul>
+<li>子组件通过$emit触发自定义事件，第二个参数为传递的数值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$emit(&#x27;add&#x27;,good)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>父组件绑定监听器获取到子组件传递过来的参数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Children @add=&quot;cartadd($event)&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>v-model</li>
+</ol>
+<ul>
+<li>双向绑定</li>
+</ul>
+<ol start="3">
+<li>.sync</li>
+<li>使用ref</li>
+</ol>
+<ul>
+<li>父组件在使用子组件的时候设置<code>ref</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Children ref=&quot;foo&quot; /&gt; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>父组件通过设置子组件<code>ref</code>来获取数据</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$refs.foo  // 获取子组件实例，通过子组件实例我们就能拿到对应的数据</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>兄弟组件通信</p>
+<p>​	5. EventBus</p>
+<ul>
+<li>创建一个中央事件总线<code>EventBus</code></li>
+<li>兄弟组件通过<code>$emit</code>触发自定义事件，<code>$emit</code>第二个参数为传递的数值</li>
+<li>另一个兄弟组件通过<code>$on</code>监听自定义事件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">创建一个Bus.js</span><br><span class="line">// 创建一个中央时间总线类  </span><br><span class="line">class Bus &#123;  </span><br><span class="line">  constructor() &#123;  </span><br><span class="line">    this.callbacks = &#123;&#125;;   // 存放事件的名字  </span><br><span class="line">  &#125;  </span><br><span class="line">  $on(name, fn) &#123;  </span><br><span class="line">    this.callbacks[name] = this.callbacks[name] || [];  </span><br><span class="line">    this.callbacks[name].push(fn);  </span><br><span class="line">  &#125;  </span><br><span class="line">  $emit(name, args) &#123;  </span><br><span class="line">    if (this.callbacks[name]) &#123;  </span><br><span class="line">      this.callbacks[name].forEach((cb) =&gt; cb(args));  </span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">// main.js  </span><br><span class="line">Vue.prototype.$bus = new Bus() // 将$bus挂载到vue实例的原型上  </span><br><span class="line">// 另一种方式  </span><br><span class="line">Vue.prototype.$bus = new Vue() // Vue已经实现了Bus的功能  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在子组件1</span><br><span class="line">this.$bus.$emit(&#x27;foo&#x27;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在子组件2</span><br><span class="line">this.$bus.$on(&#x27;foo&#x27;,this.handle)</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>祖先后代组件通信</p>
+<pre><code>6.  $parent或$root
+</code></pre>
+<p>通过共同祖辈<code>$parent</code>或者<code>$root</code>搭建通信桥连</p>
+<p>兄弟组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$parent.on(&#x27;add&#x27;,this.add)</span><br></pre></td></tr></table></figure>
+
+<p>另一个兄弟组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$parent.emit(&#x27;add&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>​	7.  attrs与listeners</p>
+<pre><code>8.  Provide与lnject
+</code></pre>
+</li>
+</ol>
+<h5 id="10-Vuex"><a href="#10-Vuex" class="headerlink" title="10.Vuex"></a>10.Vuex</h5><ul>
+<li>Vuex是什么<ul>
+<li>Vuex是一个专为Vue应用程序开发的状态管理模式，它采用集中式存储管理所有组件的数据状态。</li>
+</ul>
+</li>
+<li><code>state</code>：存放共享变量</li>
+<li><code>mutations</code>：存放修改<code>state</code>的方法</li>
+<li><code>actions</code>：存放修改state的方法</li>
+</ul>
+<p>优点：共享变量统一管理</p>
+<p>缺点：vuex是保存在内存中，刷新之后就会丢失</p>
+<p>​		（可以通过vuex-presisit插件来做持久化）</p>
+<h5 id="11-跨域是什么"><a href="#11-跨域是什么" class="headerlink" title="11.跨域是什么"></a>11.跨域是什么</h5><p>是浏览器基于同源策略的一种安全手段</p>
+<p>所谓同源（指在同一个域）具有以下三个相同点</p>
+<ul>
+<li>协议相同</li>
+<li>主机相同</li>
+<li>端口相同</li>
+</ul>
+<p>反正非同源请求，也就是协议、端口、主机其中一项不相同的时候，这时候就会产生跨域</p>
+<p>解决跨域的方法有很多，下面列举了三种：</p>
+<ul>
+<li>CORS</li>
+</ul>
+<p>添加中间件，直接设置<code>Access-Control-Allow-Origin</code>响应头</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx, next)=&gt; &#123;</span><br><span class="line">  ctx.<span class="title function_">set</span>(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">  ctx.<span class="title function_">set</span>(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild&#x27;</span>);</span><br><span class="line">  ctx.<span class="title function_">set</span>(<span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="string">&#x27;PUT, POST, GET, DELETE, OPTIONS&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span> (ctx.<span class="property">method</span> == <span class="string">&#x27;OPTIONS&#x27;</span>) &#123;</span><br><span class="line">    ctx.<span class="property">body</span> = <span class="number">200</span>; </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>JSONP</p>
+</li>
+<li><p>Proxy</p>
+</li>
+<li><p>在<code>vue.config.js</code>文件，新增以下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">amodule.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">devServer</span>: &#123;</span><br><span class="line">        <span class="attr">host</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">        <span class="attr">port</span>: <span class="number">8084</span>,</span><br><span class="line">        <span class="attr">open</span>: <span class="literal">true</span>,<span class="comment">// vue项目启动时自动打开浏览器</span></span><br><span class="line">        <span class="attr">proxy</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;/api&#x27;</span>: &#123; <span class="comment">// &#x27;/api&#x27;是代理标识，用于告诉node，url前面是/api的就是使用代理的</span></span><br><span class="line">                <span class="attr">target</span>: <span class="string">&quot;http://xxx.xxx.xx.xx:8080&quot;</span>, <span class="comment">//目标地址，一般是指后台服务器地址</span></span><br><span class="line">                <span class="attr">changeOrigin</span>: <span class="literal">true</span>, <span class="comment">//是否跨域</span></span><br><span class="line">                <span class="attr">pathRewrite</span>: &#123; <span class="comment">// pathRewrite 的作用是把实际Request Url中的&#x27;/api&#x27;用&quot;&quot;代替</span></span><br><span class="line">                    <span class="string">&#x27;^/api&#x27;</span>: <span class="string">&quot;&quot;</span> </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过<code>axios</code>发送请求中，配置请求的根路径</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">defaults</span>.<span class="property">baseURL</span> = <span class="string">&#x27;/api&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="12-组件中的data为什么要定义一个函数而不是一个对象"><a href="#12-组件中的data为什么要定义一个函数而不是一个对象" class="headerlink" title="12.组件中的data为什么要定义一个函数而不是一个对象"></a>12.组件中的data为什么要定义一个函数而不是一个对象</h5><p>组件实例对象data必须为函数，目的是为了防止多个组件实例对象之间共用一个data，这样就不会产生数据污染；</p>
+<h5 id="13-对vue中的-keepalive-的理解"><a href="#13-对vue中的-keepalive-的理解" class="headerlink" title="13.对vue中的 keepalive 的理解"></a>13.对vue中的 keepalive 的理解</h5><p>概念：keep-alive 是vue的内置组件，当它动态包裹组件时，会缓存不活动组件实例</p>
+<p>作用：在组件切换的过程中将状态保存在内存中，防止重复渲染DOM，减少加载时间提高用户体验</p>
+
       
     </div>
     <footer class="article-footer">
