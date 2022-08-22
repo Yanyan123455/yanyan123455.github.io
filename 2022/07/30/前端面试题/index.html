@@ -6,15 +6,15 @@
   
   <title>前端面试题一 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="css面试题1.说说你对盒子模型的理解？  盒子模型是由content（内容）、padding（内边距）、margin（外边距）、border（边框）四个部分组成，盒子模型也分为：标准模型、IE模型  2.CSS3新增了哪些新特性？  CSS3新增了一些css选择器、样式、颜色、过渡、转换、动画、渐变">
+  <meta name="description" content="css面试题1.说说你对盒子模型的理解？  盒子模型是由content（内容）、padding（内边距）、margin（外边距）、border（边框）四个部分组成  2.CSS3新增了哪些新特性？  边框：  border-radius添加圆角边框        border-shadow：给框添加阴影 （水平位移，垂直位移，模糊半径，阴影尺寸，阴影颜色，insetr（内&#x2F;外部阴影））">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端面试题一">
 <meta property="og:url" content="http://example.com/2022/07/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="css面试题1.说说你对盒子模型的理解？  盒子模型是由content（内容）、padding（内边距）、margin（外边距）、border（边框）四个部分组成，盒子模型也分为：标准模型、IE模型  2.CSS3新增了哪些新特性？  CSS3新增了一些css选择器、样式、颜色、过渡、转换、动画、渐变">
+<meta property="og:description" content="css面试题1.说说你对盒子模型的理解？  盒子模型是由content（内容）、padding（内边距）、margin（外边距）、border（边框）四个部分组成  2.CSS3新增了哪些新特性？  边框：  border-radius添加圆角边框        border-shadow：给框添加阴影 （水平位移，垂直位移，模糊半径，阴影尺寸，阴影颜色，insetr（内&#x2F;外部阴影））">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-07-30T05:47:45.000Z">
-<meta property="article:modified_time" content="2022-07-31T07:42:24.405Z">
+<meta property="article:modified_time" content="2022-08-16T00:40:40.651Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -96,14 +96,96 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="css面试题"><a href="#css面试题" class="headerlink" title="css面试题"></a>css面试题</h1><p>1.说说你对盒子模型的理解？</p>
+        <h1 id="css面试题"><a href="#css面试题" class="headerlink" title="css面试题"></a>css面试题</h1><p><strong>1.说说你对盒子模型的理解？</strong></p>
 <ul>
-<li>盒子模型是由content（内容）、padding（内边距）、margin（外边距）、border（边框）四个部分组成，盒子模型也分为：标准模型、IE模型</li>
+<li>盒子模型是由content（内容）、padding（内边距）、margin（外边距）、border（边框）四个部分组成</li>
 </ul>
-<p>2.CSS3新增了哪些新特性？</p>
+<p><strong>2.CSS3新增了哪些新特性？</strong></p>
 <ul>
-<li>CSS3新增了一些css选择器、样式、颜色、过渡、转换、动画、渐变</li>
+<li>边框：</li>
 </ul>
+<p>border-radius添加圆角边框       </p>
+<p>border-shadow：给框添加阴影 （水平位移，垂直位移，模糊半径，阴影尺寸，阴影颜色，insetr（内&#x2F;外部阴影））</p>
+<p>border-image：设置边框图像</p>
+<p>border-image-source 边框图片的路径</p>
+<p>border-image-slice 图片边框向内偏移</p>
+<p>border-image-width 图片边框的宽度</p>
+<p>border-image-outset 边框图像区域超出边框的量</p>
+<p>border-image-repeat 图像边框是否平铺（repeat平铺 round铺满 stretch 拉伸</p>
+<ul>
+<li>背景：</li>
+</ul>
+<p>Background-size 背景图片尺寸</p>
+<p>Background-origin规定background-position属性相对于什么位置定位</p>
+<p>Background-clip 规定背景的绘制区域（padding-box，border-box，content-box）</p>
+<ul>
+<li>渐变：</li>
+</ul>
+<p>Linear-gradient（）线性渐变</p>
+<p>Radial-gradient（）径向渐变</p>
+<ul>
+<li>文本效果：</li>
+</ul>
+<p>Word-break：定义如何换行</p>
+<p>Word-wrap：允许长的内容可以自动换行</p>
+<p>Text-overflow：指定当文本溢出包含它的元素，应该干啥</p>
+<p>Text-shadow：文字阴影（水平位移，垂直位移，模糊半径，阴影颜色）</p>
+<ul>
+<li>转换：</li>
+</ul>
+<p>Transform 应用于2D3D转换，可以将元素旋转，缩放，移动，倾斜</p>
+<p>Transform-origin 可以更改元素转换的位置，（改变xyz轴）</p>
+<p>Transform-style 指定嵌套元素怎么样在三位空间中呈现</p>
+<ul>
+<li>2D转换方法：</li>
+</ul>
+<p>rotate旋转 translate（x，y）指定元素在二维空间的位移 scale（n）定义缩放转换</p>
+<p>3D转换方法：</p>
+<p>Perspective（n）为3D转换 translate rotate scale</p>
+<ul>
+<li>过渡：</li>
+</ul>
+<p>Transition-property过渡属性名</p>
+<p>Transition-duration 完成过渡效果需要花费的时间</p>
+<p>Transition-timing-function 指定切换效果的速度</p>
+<p>Transition-delay 指定什么时候开始切换效果</p>
+<ul>
+<li>动画：animation</li>
+</ul>
+<p>Animation-name 为@keyframes动画名称</p>
+<p>animation-duration 动画需要花费的时间</p>
+<p>animation-timing-function 动画如何完成一个周期</p>
+<p>animation-delay 动画启动前的延迟间隔</p>
+<p>animation-iteration-count 动画播放次数</p>
+<p>animation-direction 是否轮流反向播放动画</p>
+<p><strong>3.视频&#x2F;音频标签的使用</strong></p>
+<p>视频：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;&quot;&gt;&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+
+<p>视频标签属性：</p>
+<p>src 需要播放的视频地址</p>
+<p>width&#x2F;height 设置播放视频的宽高，和img标签的宽高属性一样</p>
+<p>autoplay 是否自动播放</p>
+<p>controls 是否显示控制条</p>
+<p>poster 没有播放之前显示的展位图片</p>
+<p>loop 是否循环播放</p>
+<p>perload 预加载视频（缓存）与autoplay相冲突，设置了autoplay属性，perload属性会失效。</p>
+<p>muted 静音模式</p>
+<p>音频: 音频属性和视频属性差不多，不过宽高和poster属性不能用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio&gt;</span><br><span class="line">	&lt;source src=&quot;&quot; type=&quot;&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.清楚浮动的方式有哪些？</strong></p>
+<p><strong>5.定位属性值有什么区别</strong></p>
+<p><strong>6.</strong></p>
+<p><strong>7.</strong></p>
+<p><strong>8.</strong></p>
+<p><strong>9.</strong></p>
+<p><strong>10.</strong></p>
+<p><strong>11.</strong></p>
+<p><strong>12.</strong></p>
+<p><strong>13.</strong></p>
+<p><strong>14.</strong></p>
+<p><strong>15.</strong></p>
 
       
     </div>
